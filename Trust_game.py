@@ -118,43 +118,20 @@ class Tournament:
                 line = str(self.rounds)+","+str(self.agent_list[i].name)+","+ str(self.agent_rewards[i])+"\n"
                 file.write(line)
             
-
-agent_list = [MrRandom,MrCopy]
-
-# if we want to simulate the game for more agents:
-"""
-number_of_agents = {"Mr. Copy": 0, "Mr. Evil": 0, "Mr. Good": 0, "Mr. Grunde": 0, "Mr. Sherlock": 0}
+agents = [MrCopy, MrEvil, MrGood, MrGrudge, MrRandom, MrSherlock] # list of all defined agents
+agent_list=[] 
 
 def multiple_append(agent, number): 
     for i in range(number):
         agent_list.append(agent)
 
-for i in range(len(number_of_agents)):
-    multiple_append(list(number_of_agents.keys())[i],list(number_of_agents.values())[i])
+print("There are 6 types of agents: Mr. Copy, Mr. Evil, Mr. Good, Mr. Grudge, Mr. Random and Mr. Sherlock. You can choose how many agents of each type will participate this game.")
+for i in range(len(agents)):
+    line= "Number of {} in game: ".format(str(agents[i].name))
+    num = int(input(line))
+    multiple_append(agents[i],num)
 
-"""
-
-# if a player wants to choose his own number of agents -> use only with the part for more agents
-"""
-print("There are 6 types of agents: Mr. Copy, Mr. Evil, Mr. Good, Mr. Grudge, Mr. Random and Mr. Sherlock. How many agents of each type do you want?")
-number_of_agents = {"Mr. Copy": 0, "Mr. Evil": 0, "Mr. Good": 0, "Mr. Grunde": 0, "Mr. Sherlock": 0, "Mr. Sherlock": 0}
-
-for i in range(len(number_of_agents)):
-    number= input("Enter a number of " + str(list(number_of_agents.keys())[i])+": ")
-    number_of_agents[str(list(number_of_agents.keys())[i])] = number
-
-"""
-
-# do a match just once for given number of rounds
-"""
-match1 = Tournament(1, agent_list)
-match1.DoMatch()
-match1.Print_score()
-print(str(filename) + "was saved")
-
-"""
-
-# do match for different numbers of rounds
+# do match for a given number of rounds
 for i in range(1,11):
     match1 = Tournament(i, agent_list)
     match1.DoMatch()
